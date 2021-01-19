@@ -24,7 +24,7 @@ export default function Category({category, products }: CategoryProps) {
   return (
     <div>
       <h1>
-      {PrismcDOM.RichText.asText(category.data.title)}
+        {PrismcDOM.RichText.asText(category.data.title)}
       </h1>
 
       <ul>
@@ -45,7 +45,7 @@ export default function Category({category, products }: CategoryProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
   
   const categories = await client().query([
-    Prismic.Predicates.at('documents.type', 'category'),
+    Prismic.Predicates.at('document.type', 'category'),
   ])
 
 
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps<CategoryProps> = async (context) => 
   const category = await client().getByUID('category', String(slug), {});
 
   const products = await client().query([
-    Prismic.Predicates.at('documents.type', 'product'),
+    Prismic.Predicates.at('document.type', 'product'),
     Prismic.Predicates.at('my.product.category', category.id)
   ])
 
