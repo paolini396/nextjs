@@ -4,8 +4,9 @@ import { client } from '@/lib/prismic';
 import { GetServerSideProps } from 'next';
 import Prismic from 'prismic-javascript';
 import PrismcDOM from 'prismic-dom';
-import { Title } from '../styles/pages/Home';
 import { Document } from 'prismic-javascript/types/documents'
+
+import { Container, Title, ProductsList } from '../styles/pages/Home';
 
 interface HomeProps {
   recommendedProducts: Document[];
@@ -13,32 +14,37 @@ interface HomeProps {
 
 export default function Home({ recommendedProducts }: HomeProps) {
 
+  console.log({recommendedProducts})
+
   return (
-    <div>
+    <Container>
       <SEO 
         title="DevCommerce, o seu e-commerce!"  
         image="embraer.jpg" 
         shouldExcludeTitleSiffix
       />
-
      <section>
-     <Title>Products</Title>
-
-     <ul>
+    <Link href="/products">
+     <Title>Lista de Produtos</Title>
+    </Link>
+     <ProductsList>
      {recommendedProducts.map(recommendedProduct => (
+      <Link  href={`/catalog/products/${recommendedProduct.uid}`}>
        <li key={recommendedProduct.id}>
-         <Link  href={`/catalog/products/${recommendedProduct.uid}`}>
+          <img src={recommendedProduct.data.thumbnail.url}  width="50" alt=""/>
            <a>
-             {PrismcDOM.RichText.asText(recommendedProduct.data.title)}
+             Produto: {PrismcDOM.RichText.asText(recommendedProduct.data.title)}
            </a>
-         </Link>
+           <p>Preço: {recommendedProduct.data.price}</p>
+
+           <button>Comprar</button>
        </li>
+       </Link>
+
      ))}
-     </ul>
+     </ProductsList>
      </section>
-
-
-    </div>
+    </Container>
   )
 }
 

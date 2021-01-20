@@ -9,7 +9,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #121214;
+    background: #425887;
     color: #fff;
     font-family: Roboto, Arial, Helvetica, sans-serif;
   }
