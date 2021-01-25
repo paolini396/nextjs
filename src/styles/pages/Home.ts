@@ -26,8 +26,8 @@ export const ProductsList = styled.ul`
   li {
     display: flex;
     flex-direction: column;
-    background: #F6F9FF;
-    width: 220px;
+    background: #EEEEEE;
+    width: 380px;
     height: 300px;
     align-items: center;
     justify-content: center;

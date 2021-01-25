@@ -9,7 +9,6 @@ export const Container = styled.div`
   height: 60px;
   background: #fff;
   margin-bottom: 20px;
-  box-shadow: 0 0 1em #000;
 
 
   ul {
@@ -19,7 +18,7 @@ export const Container = styled.div`
     justify-content: start;
 
     li {
-      color: #425887;
+      color: #000;
       font-weight: 700;
       list-style: none;
       margin: 0 10px;
