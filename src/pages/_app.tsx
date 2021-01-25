@@ -1,10 +1,14 @@
-import GlobalStyle from "@/styles/Global.Style"
-import Header from '@/components/Header';
+import React from 'react'
+import GlobalStyle from '@/styles/Global.Style'
+import Header from '@/components/Header'
 
-function MyApp({ Component, pageProps }) {
+import AppProvider from '@/hooks'
+
+const MyApp: React.FC = ({ Component, pageProps }) => {
   return (
-     <>
+    <>
       <Header />
+      <AppProvider />
       <GlobalStyle />
       <Component {...pageProps} />
     </>
