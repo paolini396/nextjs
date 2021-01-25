@@ -1,33 +1,35 @@
-import Head from 'next/head';
+import React from 'react'
+import Head from 'next/head'
 
 interface SEOProps {
-  title: string;
-  description?: string;
-  image?: string;
-  shouldExcludeTitleSiffix?: boolean;
-  shouldIndexPage?: boolean;
+  title: string
+  description?: string
+  image?: string
+  shouldExcludeTitleSiffix?: boolean
+  shouldIndexPage?: boolean
 }
 
-export default function SEO({ 
+export default function SEO({
   title,
   description,
   image,
   shouldExcludeTitleSiffix = false,
-  shouldIndexPage = true,
- }:SEOProps) {
-
-  const pageTitle = `${title} ${!shouldExcludeTitleSiffix ? '| DevCommerce' : ''}`;
-  const pageImage = image ? `${process.env.NEXT_PUBLIC_SITE_URL}/${image}` : null
-
-
+  shouldIndexPage = true
+}: SEOProps) {
+  const pageTitle = `${title} ${
+    !shouldExcludeTitleSiffix ? '| DevCommerce' : ''
+  }`
+  const pageImage = image
+    ? `${process.env.NEXT_PUBLIC_SITE_URL}/${image}`
+    : null
   return (
     <Head>
       <title>{pageTitle}</title>
 
-      { description && <meta name="description" content={description} /> }
-      { pageImage && <meta name="image" content={pageImage} /> }
+      {description && <meta name="description" content={description} />}
+      {pageImage && <meta name="image" content={pageImage} />}
 
-      { !shouldIndexPage && <meta name="robots" content="noindex/nofollow" />}
+      {!shouldIndexPage && <meta name="robots" content="noindex/nofollow" />}
 
       <meta httpEquiv="x-ua-compatible" content="IE=edge,chrome=1" />
       <meta name="MobileOptimized" content="320" />
